@@ -1,8 +1,12 @@
 --[[
 Gif Player by VibeGPT
 Project Owner: 1ksuwu
+V0.1.3
 ]]
+
 local req = request or http_request or httprequest
+
+local ContentProvider = game:GetService("ContentProvider")
 
 local ROOT = "GifAssets"
 local CAT  = "PH"
@@ -13,6 +17,7 @@ local SOURCES: { [string]: string } = {
 
 local meta:   { [string]: { name: string, fps: number, frames: { string } } } = {}
 local assets: { [string]: { [number]: string } } = {}
+local ready:  { [string]: boolean } = {}
 
 
 local function get(url: string): string
@@ -39,26 +44,20 @@ end
 
 local function fetchMeta(name: string)
 	if meta[name] then return meta[name] end
-
 	local url = SOURCES[name]
 	assert(url, "SpriteLoader: unknown character '" .. name .. "'")
-
 	local fn, err = loadstring(get(url))
 	assert(fn, "SpriteLoader: parse error for '" .. name .. "': " .. tostring(err))
-
 	meta[name] = fn()
 	return meta[name]
 end
 
 local function resolveFrame(name: string, index: number): string
 	local path = framePath(name, index)
-
 	if not isfile(path) then
 		ensureDir(charDir(name))
-		local url = fetchMeta(name).frames[index + 1]
-		writefile(path, get(url))
+		writefile(path, get(fetchMeta(name).frames[index + 1]))
 	end
-
 	return getcustomasset(path)
 end
 
@@ -66,11 +65,29 @@ end
 local SpriteLoader = {}
 
 function SpriteLoader:Preload(name: string)
-	if assets[name] then return end
+	if ready[name] then return end
+
 	assets[name] = {}
-	for i in ipairs(fetchMeta(name).frames) do
+
+	local frames = fetchMeta(name).frames
+	for i in ipairs(frames) do
 		assets[name][i - 1] = resolveFrame(name, i - 1)
 	end
+
+	local dummies: { ImageLabel } = {}
+	for i, asset in pairs(assets[name]) do
+		local d     = Instance.new("ImageLabel")
+		d.Image     = asset
+		d.Parent    = game:GetService("CoreGui")
+		d.Visible   = false
+		dummies[i]  = d
+	end
+
+	ContentProvider:PreloadAsync(dummies)
+
+	for _, d in ipairs(dummies) do d:Destroy() end
+
+	ready[name] = true
 end
 
 function SpriteLoader:GetGifFrame(name: string, index: number): string
@@ -88,6 +105,10 @@ end
 
 function SpriteLoader:GetFrameCount(name: string): number
 	return #fetchMeta(name).frames
+end
+
+function SpriteLoader:IsReady(name: string): boolean
+	return ready[name] == true
 end
 
 return SpriteLoader
