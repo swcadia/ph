@@ -1,7 +1,6 @@
 --[[
 Gif Player by VibeGPT
 Project Owner: 1ksuwu
-V0.1.3
 ]]
 
 local req = request or http_request or httprequest
@@ -56,7 +55,9 @@ local function resolveFrame(name: string, index: number): string
 	local path = framePath(name, index)
 	if not isfile(path) then
 		ensureDir(charDir(name))
-		writefile(path, get(fetchMeta(name).frames[index + 1]))
+		local res = req({ Url = fetchMeta(name).frames[index + 1], Method = "GET" })
+		assert(res and res.StatusCode == 200, "SpriteLoader: frame download failed #" .. index)
+		writefile(path, res.Body)
 	end
 	return getcustomasset(path)
 end
@@ -76,11 +77,11 @@ function SpriteLoader:Preload(name: string)
 
 	local dummies: { ImageLabel } = {}
 	for i, asset in pairs(assets[name]) do
-		local d     = Instance.new("ImageLabel")
-		d.Image     = asset
-		d.Parent    = game:GetService("CoreGui")
-		d.Visible   = false
-		dummies[i]  = d
+		local d    = Instance.new("ImageLabel")
+		d.Image    = asset
+		d.Parent   = game:GetService("CoreGui")
+		d.Visible  = false
+		dummies[i] = d
 	end
 
 	ContentProvider:PreloadAsync(dummies)
