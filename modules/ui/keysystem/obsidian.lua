@@ -2,4 +2,1029 @@
 Obsidian.kys
 Made by 1ksuwu
 ]]
-local Fs=game:GetService"TweenService"local ns=game:GetService"UserInputService"local Kd=game:GetService"MarketplaceService"local q=game:GetService"CoreGui"local n=game:GetService"Players"local function Es()local j,l=pcall(function()if gethui then return gethui()end return q end)if j and l then return l end local p=n.LocalPlayer if p then return p:WaitForChild"PlayerGui"end return q end local Js={}function Js:CreateKeySystem(N)N=N or{}local ub=N.Title or"Key system"local Jb=N.Description or"My HUB"local ib=N.Icon or 5437589347 local Sd=N.SupportedGame or{}local ci=N.SocialLinks or{Discord="dsc.gg/obsidian",WebSite="obsidian.com"}local jr=N.Ads local lr=N.Getkey or function()end local vr=N.CheckKey or function(L)return false end local ba=N.Theme or{}local Fp=ba.BackgroundColor or Color3.fromRGB(15,15,15)local Lq=ba.MainColor or Color3.fromRGB(25,25,25)local sr=ba.AccentColor or Color3.fromRGB(125,85,255)local Oq=ba.OutlineColor or Color3.fromRGB(40,40,40)local rq=ba.FontColor or Color3.fromRGB(255,255,255)local Jn=ba.SecondaryFontColor or Color3.fromRGB(150,150,150)local uq=ba.Font or Font.fromEnum(Enum.Font.Code)local Hs=Instance.new"ScreenGui"Hs.Name="Obsidian_KeySystem"Hs.ResetOnSpawn=false Hs.DisplayOrder=999 Hs.IgnoreGuiInset=true Hs.ZIndexBehavior=Enum.ZIndexBehavior.Sibling local Gs=Instance.new"UIScale"Gs.Scale=0.85 local ws=Instance.new"Frame"ws.Name="MainFrame"ws.Size=UDim2.new(0,600,0,360)ws.Position=UDim2.new(0.5,0,0.5,0)ws.AnchorPoint=Vector2.new(0.5,0.5)ws.BackgroundColor3=Fp ws.BorderSizePixel=0 ws.Active=true ws.ClipsDescendants=false ws.Parent=Hs Gs.Parent=ws local Aa=Instance.new"UICorner"Aa.CornerRadius=UDim.new(0,11)Aa.Parent=ws local Ga=Instance.new"UIStroke"Ga.Color=Oq Ga.Thickness=1 Ga.Parent=ws local Ta=Instance.new"ImageLabel"Ta.Name="Shadow"Ta.Size=UDim2.new(1,50,1,50)Ta.Position=UDim2.new(0,-25,0,-25)Ta.BackgroundTransparency=1 Ta.Image="rbxassetid://6014261993"Ta.ImageColor3=Color3.fromRGB(0,0,0)Ta.ImageTransparency=0.5 Ta.ScaleType=Enum.ScaleType.Slice Ta.SliceCenter=Rect.new(49,49,450,450)Ta.ZIndex=0 Ta.Parent=ws local Xk=Instance.new"Frame"Xk.Name="LeftPanel"Xk.Size=UDim2.new(0,356,1,0)Xk.BackgroundTransparency=1 Xk.ZIndex=2 Xk.Parent=ws local mb=Instance.new"ImageLabel"mb.Name="AppIcon"mb.Size=UDim2.new(0,40,0,40)mb.Position=UDim2.new(0,28,0,28)mb.BackgroundTransparency=1 mb.Image="rbxassetid://"..tostring(ib)mb.ImageColor3=rq mb.ScaleType=Enum.ScaleType.Fit mb.Parent=Xk local Bb=Instance.new"TextLabel"Bb.Name="TitleLabel"Bb.Size=UDim2.new(0,240,0,24)Bb.Position=UDim2.new(0,82,0,28)Bb.BackgroundTransparency=1 Bb.Text=ub Bb.TextColor3=rq Bb.TextSize=22 Bb.FontFace=uq Bb.TextXAlignment=Enum.TextXAlignment.Left Bb.Parent=Xk local Qb=Instance.new"TextLabel"Qb.Name="DescriptionLabel"Qb.Size=UDim2.new(0,240,0,14)Qb.Position=UDim2.new(0,82,0,54)Qb.BackgroundTransparency=1 Qb.Text=Jb Qb.TextColor3=Jn Qb.TextSize=12 Qb.FontFace=uq Qb.TextXAlignment=Enum.TextXAlignment.Left Qb.Parent=Xk local ac=Instance.new"Frame"ac.Name="CenterDivider"ac.Size=UDim2.new(0,1,1,-56)ac.Position=UDim2.new(0,356,0,28)ac.BackgroundColor3=Oq ac.BorderSizePixel=0 ac.ZIndex=2 ac.Parent=ws local Jf=Instance.new"Frame"Jf.Name="RightPanel"Jf.Size=UDim2.new(0,244,1,0)Jf.Position=UDim2.new(0,357,0,0)Jf.BackgroundTransparency=1 Jf.ZIndex=2 Jf.Parent=ws local wc=Instance.new"TextLabel"wc.Name="DetectedGameHeader"wc.Size=UDim2.new(0,187,0,14)wc.Position=UDim2.new(0,28,0,28)wc.BackgroundTransparency=1 wc.Text="Detected game"wc.TextColor3=Jn wc.TextSize=12 wc.FontFace=uq wc.TextXAlignment=Enum.TextXAlignment.Left wc.Parent=Jf local Hd=Instance.new"Frame"Hd.Name="GameCard"Hd.Size=UDim2.new(0,187,0,50)Hd.Position=UDim2.new(0,28,0,48)Hd.BackgroundColor3=Lq Hd.BorderSizePixel=0 Hd.Parent=Jf local Jc=Instance.new"UICorner"Jc.CornerRadius=UDim.new(0,6)Jc.Parent=Hd local Pc=Instance.new"UIStroke"Pc.Color=Oq Pc.Thickness=1 Pc.Parent=Hd local ed=Instance.new"ImageLabel"ed.Name="GameThumbnail"ed.Size=UDim2.new(0,32,0,32)ed.Position=UDim2.new(0,10,0,9)ed.BackgroundColor3=Fp ed.Image="rbxthumb://type=Asset&id="..tostring(game.PlaceId).."&w=150&h=150"ed.ScaleType=Enum.ScaleType.Crop ed.Parent=Hd local dd=Instance.new"UICorner"dd.CornerRadius=UDim.new(0,4)dd.Parent=ed local Pd=Instance.new"TextLabel"Pd.Name="GameName"Pd.Size=UDim2.new(0,130,0,14)Pd.Position=UDim2.new(0,48,0,10)Pd.BackgroundTransparency=1 Pd.Text="Loading..."Pd.TextColor3=rq Pd.TextSize=12 Pd.FontFace=uq Pd.TextXAlignment=Enum.TextXAlignment.Left Pd.TextTruncate=Enum.TextTruncate.AtEnd Pd.Parent=Hd local be=Instance.new"TextLabel"be.Name="GameStatus"be.Size=UDim2.new(0,130,0,13)be.Position=UDim2.new(0,48,0,26)be.BackgroundTransparency=1 be.Text="Checking..."be.TextColor3=Jn be.TextSize=11 be.FontFace=uq be.TextXAlignment=Enum.TextXAlignment.Left be.Parent=Hd task.spawn(function()local Qd="Roblox Experience"pcall(function()local Od=Kd:GetProductInfo(game.PlaceId)if Od and Od.Name then Qd=Od.Name end end)Pd.Text=Qd local Xd=false for _,Wd in pairs(Sd)do if tostring(Wd[1])==tostring(game.PlaceId)or tostring(Wd[1])==tostring(game.GameId)then Xd=Wd[2]break end end if Xd then be.Text="Supported"be.TextColor3=Color3.fromRGB(130,220,140)else be.Text="Not in our list"be.TextColor3=Color3.fromRGB(220,100,100)end end)local oe=Instance.new"TextLabel"oe.Name="ExecHeader"oe.Size=UDim2.new(0,187,0,12)oe.Position=UDim2.new(0,28,0,108)oe.BackgroundTransparency=1 oe.Text="Executor"oe.TextColor3=Jn oe.TextSize=12 oe.FontFace=uq oe.TextXAlignment=Enum.TextXAlignment.Left oe.Parent=Jf local xe=(identifyexecutor and identifyexecutor())or(getexecutorname and getexecutorname())or"Unknown"local Ee=Instance.new"TextLabel"Ee.Name="ExecValue"Ee.Size=UDim2.new(0,187,0,14)Ee.Position=UDim2.new(0,28,0,124)Ee.BackgroundTransparency=1 Ee.Text=xe Ee.TextColor3=rq Ee.TextSize=12 Ee.FontFace=uq Ee.TextXAlignment=Enum.TextXAlignment.Left Ee.Parent=Jf local Se=Instance.new"TextLabel"Se.Name="StatusHeader"Se.Size=UDim2.new(0,187,0,12)Se.Position=UDim2.new(0,28,0,148)Se.BackgroundTransparency=1 Se.Text="Status"Se.TextColor3=Jn Se.TextSize=12 Se.FontFace=uq Se.TextXAlignment=Enum.TextXAlignment.Left Se.Parent=Jf local gf=Instance.new"TextLabel"gf.Name="StatusValue"gf.Size=UDim2.new(0,187,0,14)gf.Position=UDim2.new(0,28,0,164)gf.BackgroundTransparency=1 gf.Text="Key required"gf.TextColor3=rq gf.TextSize=12 gf.FontFace=uq gf.TextXAlignment=Enum.TextXAlignment.Left gf.Parent=Jf local pf=Instance.new"Frame"pf.Name="RightDivider"pf.Size=UDim2.new(0,187,0,1)pf.Position=UDim2.new(0,28,0,192)pf.BackgroundColor3=Oq pf.BorderSizePixel=0 pf.Parent=Jf local function bi(Bf,sg,th,hg)local Yh=Instance.new"TextButton"Yh.Name=sg.."Button"Yh.Size=UDim2.new(0,187,0,48)Yh.Position=UDim2.new(0,28,0,Bf)Yh.BackgroundColor3=Lq Yh.BorderSizePixel=0 Yh.AutoButtonColor=false Yh.Text=""Yh.ClipsDescendants=true Yh.Parent=Jf local Mf=Instance.new"UICorner"Mf.CornerRadius=UDim.new(0,6)Mf.Parent=Yh local hh=Instance.new"UIStroke"hh.Color=Oq hh.Thickness=1 hh.Parent=Yh local mg=Instance.new"Frame"mg.Size=UDim2.new(0,24,0,24)mg.Position=UDim2.new(0,10,0,12)mg.BackgroundTransparency=1 mg.Parent=Yh local kh=Instance.new"ImageLabel"kh.Name="IconImg"kh.Size=UDim2.new(0,18,0,18)kh.Position=UDim2.new(0.5,0,0.5,0)kh.AnchorPoint=Vector2.new(0.5,0.5)kh.BackgroundTransparency=1 kh.Image=hg kh.ImageColor3=Jn kh.ScaleType=Enum.ScaleType.Fit kh.Parent=mg local zg=Instance.new"TextLabel"zg.Size=UDim2.new(0,130,0,14)zg.Position=UDim2.new(0,42,0,10)zg.BackgroundTransparency=1 zg.Text=sg zg.TextColor3=rq zg.TextSize=12 zg.FontFace=uq zg.TextXAlignment=Enum.TextXAlignment.Left zg.Parent=Yh local Vh=Instance.new"TextLabel"Vh.Size=UDim2.new(0,136,0,13)Vh.Position=UDim2.new(0,42,0,26)Vh.BackgroundTransparency=1 Vh.Text=th or""Vh.TextColor3=Jn Vh.TextSize=11 Vh.FontFace=uq Vh.TextXAlignment=Enum.TextXAlignment.Left Vh.TextTruncate=Enum.TextTruncate.AtEnd Vh.Parent=Yh Yh.MouseEnter:Connect(function()Fs:Create(Yh,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(Lq.R*255+5,Lq.G*255+5,Lq.B*255+5)}):Play()Fs:Create(hh,TweenInfo.new(0.15),{Color=sr}):Play()Fs:Create(kh,TweenInfo.new(0.15),{ImageColor3=sr}):Play()end)Yh.MouseLeave:Connect(function()Fs:Create(Yh,TweenInfo.new(0.15),{BackgroundColor3=Lq}):Play()Fs:Create(hh,TweenInfo.new(0.15),{Color=Oq}):Play()Fs:Create(kh,TweenInfo.new(0.15),{ImageColor3=Jn}):Play()end)local Xh=false Yh.MouseButton1Click:Connect(function()if th and th~=""and not Xh then Xh=true pcall(function()if setclipboard then setclipboard(th)elseif toclipboard then toclipboard(th)end end)local Qh=Vh.Text local Wh=Vh.Position local Ch=Fs:Create(Vh,TweenInfo.new(0.14,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{Position=UDim2.new(0,42,0,17),TextTransparency=1})Ch:Play()Ch.Completed:Connect(function()Vh.Text="Copied!"Vh.TextColor3=sr Vh.Position=UDim2.new(0,42,0,31)Fs:Create(Vh,TweenInfo.new(0.18,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Position=Wh,TextTransparency=0}):Play()task.delay(1.5,function()local Oh=Fs:Create(Vh,TweenInfo.new(0.14,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{Position=UDim2.new(0,42,0,17),TextTransparency=1})Oh:Play()Oh.Completed:Connect(function()Vh.Text=Qh Vh.TextColor3=Jn Vh.Position=UDim2.new(0,42,0,31)Fs:Create(Vh,TweenInfo.new(0.18,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Position=Wh,TextTransparency=0}):Play()Xh=false end)end)end)end end)return Yh end bi(204,"Discord",ci.Discord,"rbxassetid://10709782758")bi(260,"Website",ci.WebSite,"rbxassetid://10709782154")local pi=Instance.new"TextLabel"pi.Name="InputLabel"pi.Size=UDim2.new(0,300,0,14)pi.Position=UDim2.new(0,28,0,120)pi.BackgroundTransparency=1 pi.Text="License key"pi.TextColor3=Jn pi.TextSize=12 pi.FontFace=uq pi.TextXAlignment=Enum.TextXAlignment.Left pi.Parent=Xk local Qr=Instance.new"Frame"Qr.Name="InputFrame"Qr.Size=UDim2.new(0,300,0,38)Qr.Position=UDim2.new(0,28,0,140)Qr.BackgroundColor3=Lq Qr.BorderSizePixel=0 Qr.Parent=Xk local Bi=Instance.new"UIScale"Bi.Parent=Qr local Fi=Instance.new"UICorner"Fi.CornerRadius=UDim.new(0,6)Fi.Parent=Qr local lj=Instance.new"UIStroke"lj.Color=Oq lj.Thickness=1 lj.Parent=Qr local qr=Instance.new"TextBox"qr.Name="TextBox"qr.Size=UDim2.new(1,-20,1,0)qr.Position=UDim2.new(0,10,0,0)qr.BackgroundTransparency=1 qr.Text=""qr.PlaceholderText="Paste your key here"qr.PlaceholderColor3=Jn qr.TextColor3=rq qr.TextSize=13 qr.FontFace=uq qr.TextXAlignment=Enum.TextXAlignment.Left qr.ClearTextOnFocus=false qr.Parent=Qr qr.Focused:Connect(function()Fs:Create(lj,TweenInfo.new(0.2),{Color=sr}):Play()end)qr.FocusLost:Connect(function()Fs:Create(lj,TweenInfo.new(0.2),{Color=Oq}):Play()end)local function Jk(Wj,wj,uj,vk)local Fk=Instance.new"TextButton"Fk.Size=uj Fk.Position=wj Fk.BackgroundColor3=vk and sr or Lq Fk.BorderSizePixel=0 Fk.AutoButtonColor=false Fk.Text=""Fk.Parent=Xk local Ij=Instance.new"UICorner"Ij.CornerRadius=UDim.new(0,6)Ij.Parent=Fk local xk=Instance.new"UIStroke"xk.Thickness=1 xk.Color=vk and sr or Oq xk.Parent=Fk local dk=Instance.new"TextLabel"dk.Size=UDim2.new(1,0,1,0)dk.BackgroundTransparency=1 dk.Text=Wj dk.TextColor3=vk and Color3.fromRGB(20,16,20)or rq dk.TextSize=13 dk.FontFace=uq dk.Parent=Fk Fk.MouseEnter:Connect(function()if not vk then Fs:Create(xk,TweenInfo.new(0.2),{Color=sr}):Play()Fs:Create(Fk,TweenInfo.new(0.2),{BackgroundColor3=Color3.fromRGB(Lq.R*255+5,Lq.G*255+5,Lq.B*255+5)}):Play()else Fs:Create(Fk,TweenInfo.new(0.2),{BackgroundColor3=Color3.fromRGB(sr.R*255+20,sr.G*255+20,sr.B*255+20)}):Play()end end)Fk.MouseLeave:Connect(function()if not vk then Fs:Create(xk,TweenInfo.new(0.2),{Color=Oq}):Play()Fs:Create(Fk,TweenInfo.new(0.2),{BackgroundColor3=Lq}):Play()else Fs:Create(Fk,TweenInfo.new(0.2),{BackgroundColor3=sr}):Play()end end)return Fk end local or_=Jk("Submit",UDim2.new(0,28,0,196),UDim2.new(0,144,0,38),true)local hr=Jk("Get a key",UDim2.new(0,184,0,196),UDim2.new(0,144,0,38),false)local wl=Instance.new"TextLabel"wl.Name="FeedbackLabel"wl.Size=UDim2.new(0,300,0,16)wl.Position=UDim2.new(0,28,0,250)wl.BackgroundTransparency=1 wl.Text=""wl.TextColor3=Color3.fromRGB(255,100,100)wl.TextSize=12 wl.FontFace=uq wl.TextXAlignment=Enum.TextXAlignment.Center wl.TextTransparency=1 wl.Parent=Xk local ol local function Kr(hl,jl,pl)if ol then task.cancel(ol)ol=nil end wl.Text=hl wl.TextColor3=jl wl.Position=UDim2.new(0,28,0,255)Fs:Create(wl,TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency=0,Position=UDim2.new(0,28,0,250)}):Play()if pl then ol=task.delay(pl,function()local ul=Fs:Create(wl,TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{TextTransparency=1,Position=UDim2.new(0,28,0,245)})ul:Play()ul.Completed:Connect(function()if wl.TextTransparency==1 then wl.Text=""end end)end)end end local xo=false local Co=Instance.new"Frame"Co.Name="AdsOverlay"Co.Size=UDim2.new(1,0,1,0)Co.Position=UDim2.new(0,0,0,0)Co.BackgroundColor3=Color3.fromRGB(0,0,0)Co.BackgroundTransparency=1 Co.BorderSizePixel=0 Co.Visible=false Co.ZIndex=20 Co.Parent=ws local Ll=Instance.new"UICorner"Ll.CornerRadius=UDim.new(0,11)Ll.Parent=Co local Vn=Instance.new"Frame"Vn.Name="AdsModal"Vn.Size=UDim2.new(0,440,0,240)Vn.Position=UDim2.new(0.5,0,0.5,0)Vn.AnchorPoint=Vector2.new(0.5,0.5)Vn.BackgroundColor3=Fp Vn.BorderSizePixel=0 Vn.ClipsDescendants=true Vn.Parent=Co local am=Instance.new"UICorner"am.CornerRadius=UDim.new(0,10)am.Parent=Vn local gm=Instance.new"UIStroke"gm.Color=Oq gm.Thickness=1 gm.Parent=Vn local Eo=Instance.new"UIScale"Eo.Scale=0.85 Eo.Parent=Vn local ym=Instance.new"TextLabel"ym.Name="AdsTitle"ym.Size=UDim2.new(1,-70,0,22)ym.Position=UDim2.new(0,20,0,16)ym.BackgroundTransparency=1 ym.Text="Select Checkpoint / Ad"ym.TextColor3=rq ym.TextSize=16 ym.FontFace=uq ym.TextXAlignment=Enum.TextXAlignment.Left ym.Parent=Vn local Mm=Instance.new"TextLabel"Mm.Name="AdsSubtitle"Mm.Size=UDim2.new(1,-70,0,14)Mm.Position=UDim2.new(0,20,0,38)Mm.BackgroundTransparency=1 Mm.Text="Choose your preferred link provider"Mm.TextColor3=Jn Mm.TextSize=11 Mm.FontFace=uq Mm.TextXAlignment=Enum.TextXAlignment.Left Mm.Parent=Vn local Fo=Instance.new"TextButton"Fo.Name="CloseBtn"Fo.Size=UDim2.new(0,28,0,28)Fo.Position=UDim2.new(1,-38,0,16)Fo.BackgroundColor3=Lq Fo.BorderSizePixel=0 Fo.AutoButtonColor=false Fo.Text="\226\156\149"Fo.TextColor3=Jn Fo.TextSize=13 Fo.FontFace=uq Fo.Parent=Vn local gn=Instance.new"UICorner"gn.CornerRadius=UDim.new(0,6)gn.Parent=Fo local Fn=Instance.new"UIStroke"Fn.Color=Oq Fn.Thickness=1 Fn.Parent=Fo Fo.MouseEnter:Connect(function()Fs:Create(Fo,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(Lq.R*255+10,Lq.G*255+10,Lq.B*255+10)}):Play()Fs:Create(Fn,TweenInfo.new(0.15),{Color=sr}):Play()Fs:Create(Fo,TweenInfo.new(0.15),{TextColor3=rq}):Play()end)Fo.MouseLeave:Connect(function()Fs:Create(Fo,TweenInfo.new(0.15),{BackgroundColor3=Lq}):Play()Fs:Create(Fn,TweenInfo.new(0.15),{Color=Oq}):Play()Fs:Create(Fo,TweenInfo.new(0.15),{TextColor3=Jn}):Play()end)local op=Instance.new"ScrollingFrame"op.Name="AdsScroll"op.Size=UDim2.new(1,-40,0,150)op.Position=UDim2.new(0,20,0,68)op.BackgroundTransparency=1 op.BorderSizePixel=0 op.ScrollBarThickness=3 op.ScrollBarImageColor3=sr op.CanvasSize=UDim2.new(0,0,0,0)op.Parent=Vn local eo=Instance.new"UIGridLayout"eo.CellSize=UDim2.new(0,192,0,64)eo.CellPadding=UDim2.new(0,12,0,10)eo.SortOrder=Enum.SortOrder.LayoutOrder eo.Parent=op eo:GetPropertyChangedSignal"AbsoluteContentSize":Connect(function()op.CanvasSize=UDim2.new(0,0,0,eo.AbsoluteContentSize.Y+10)end)local function Xq(uo)if not xo then return end xo=false local po=Fs:Create(Co,TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=1})local ro=Fs:Create(Eo,TweenInfo.new(0.2,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Scale=0.85})po:Play()ro:Play()ro.Completed:Connect(function()Co.Visible=false if uo then uo()end end)end local function kr()if xo then return end xo=true Co.Visible=true Co.BackgroundTransparency=1 Eo.Scale=0.85 Fs:Create(Co,TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=0.5}):Play()Fs:Create(Eo,TweenInfo.new(0.25,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Scale=1}):Play()end Fo.MouseButton1Click:Connect(function()Xq()end)local function gr()for _,Ko in ipairs(op:GetChildren())do if Ko:IsA"TextButton"then Ko:Destroy()end end if type(jr)~="table"then return end for _r,dp in pairs(jr)do local Sp=0 local br=tostring(_r)if type(dp)=="table"then Sp=dp[1]or dp.Icon or 0 br=dp[2]or dp.Name or tostring(_r)elseif type(dp)=="string"then br=dp elseif type(dp)=="number"then Sp=dp end local Uq=Instance.new"TextButton"Uq.Name="AdCard_"..tostring(_r)Uq.BackgroundColor3=Lq Uq.BorderSizePixel=0 Uq.AutoButtonColor=false Uq.Text=""Uq.ClipsDescendants=true Uq.Parent=op local rp=Instance.new"UICorner"rp.CornerRadius=UDim.new(0,8)rp.Parent=Uq local Nq=Instance.new"UIStroke"Nq.Color=Oq Nq.Thickness=1 Nq.Parent=Uq local hq=Instance.new"ImageLabel"hq.Name="AdIcon"hq.Size=UDim2.new(0,36,0,36)hq.Position=UDim2.new(0,12,0.5,0)hq.AnchorPoint=Vector2.new(0,0.5)hq.BackgroundColor3=Fp hq.BackgroundTransparency=0.5 hq.BorderSizePixel=0 hq.ScaleType=Enum.ScaleType.Fit local bq=tostring(Sp)if bq:find"rbxasset"or bq:find"http"then hq.Image=bq elseif tonumber(Sp)and tonumber(Sp)>0 then hq.Image="rbxassetid://"..tostring(Sp)elseif(isfile and isfile(bq))or(readfile and pcall(readfile,bq))then local Yp=getcustomasset or getsynasset or GetCustomAsset if Yp then hq.Image=Yp(bq)else hq.Image=bq end else hq.Image="rbxassetid://10709782154"end local fq=Instance.new"UICorner"fq.CornerRadius=UDim.new(0,6)fq.Parent=hq hq.Parent=Uq local Wq=Instance.new"TextLabel"Wq.Name="AdName"Wq.Size=UDim2.new(1,-60,0,18)Wq.Position=UDim2.new(0,56,0.5,-9)Wq.BackgroundTransparency=1 Wq.Text=br Wq.TextColor3=rq Wq.TextSize=13 Wq.FontFace=uq Wq.TextXAlignment=Enum.TextXAlignment.Left Wq.TextTruncate=Enum.TextTruncate.AtEnd Wq.Parent=Uq Uq.MouseEnter:Connect(function()Fs:Create(Uq,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(Lq.R*255+8,Lq.G*255+8,Lq.B*255+8)}):Play()Fs:Create(Nq,TweenInfo.new(0.15),{Color=sr}):Play()end)Uq.MouseLeave:Connect(function()Fs:Create(Uq,TweenInfo.new(0.15),{BackgroundColor3=Lq}):Play()Fs:Create(Nq,TweenInfo.new(0.15),{Color=Oq}):Play()end)local dr=false Uq.MouseButton1Click:Connect(function()if dr then return end dr=true Fs:Create(Uq,TweenInfo.new(0.1),{BackgroundColor3=sr}):Play()Wq.TextColor3=Color3.fromRGB(20,16,20)Xq(function()pcall(lr,_r)Kr("Link copied for "..br.."!",sr,3)dr=false end)end)end end if jr and next(jr)then gr()end hr.MouseButton1Click:Connect(function()if jr and next(jr)then kr()else pcall(lr)Kr("Get Key link copied!",sr,3)end end)or_.MouseButton1Click:Connect(function()local wr=qr.Text Kr("Checking key...",sr)task.spawn(function()local xr,yr=pcall(vr,wr)if xr and yr then Kr("Key verified!",Color3.fromRGB(120,230,130))task.wait(0.5)local Ir=Fs:Create(Gs,TweenInfo.new(0.3,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Scale=0.8})local Hr=Fs:Create(ws,TweenInfo.new(0.25,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=1})Ir:Play()Hr:Play()Ir.Completed:Connect(function()Hs:Destroy()end)else Kr("Invalid key. Please try again.",Color3.fromRGB(255,90,90),3)local Mr={-6,6,-4,4,-2,2,0}for _,Pr in ipairs(Mr)do Fs:Create(Qr,TweenInfo.new(0.04,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Position=UDim2.new(0,28+Pr,0,140)}):Play()task.wait(0.04)end Qr.Position=UDim2.new(0,28,0,140)end end)end)local rs=false local qs,us,Bs ws.InputBegan:Connect(function(fs)if fs.UserInputType==Enum.UserInputType.MouseButton1 or fs.UserInputType==Enum.UserInputType.Touch then rs=true us=fs.Position Bs=ws.Position fs.Changed:Connect(function()if fs.UserInputState==Enum.UserInputState.End then rs=false end end)end end)ws.InputChanged:Connect(function(ms)if ms.UserInputType==Enum.UserInputType.MouseMovement or ms.UserInputType==Enum.UserInputType.Touch then qs=ms end end)ns.InputChanged:Connect(function(ts)if ts==qs and rs then local Cs=ts.Position-us Fs:Create(ws,TweenInfo.new(0.06,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Position=UDim2.new(Bs.X.Scale,Bs.X.Offset+Cs.X,Bs.Y.Scale,Bs.Y.Offset+Cs.Y)}):Play()end end)Hs.Parent=Es()Fs:Create(Gs,TweenInfo.new(0.35,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Scale=1}):Play()return Hs end return Js
+--[[
+    Obsidian Key System Library
+    Layout based on AirFlow, Theme based on Obsidian
+]]
+
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local MarketplaceService = game:GetService("MarketplaceService")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+
+-- Safe Parent Target
+local function GetGuiParent()
+    local success, parent = pcall(function()
+        if gethui then
+            return gethui()
+        end
+        return CoreGui
+    end)
+    if success and parent then
+        return parent
+    end
+    local localPlayer = Players.LocalPlayer
+    if localPlayer then
+        return localPlayer:WaitForChild("PlayerGui")
+    end
+    return CoreGui
+end
+
+local Library = {}
+
+function Library:CreateKeySystem(config)
+    config = config or {}
+    
+    local title = config.Title or "Key system"
+    local description = config.Description or "My HUB"
+    local iconId = config.Icon or 5437589347
+    local supportedGame = config.SupportedGame or {}
+    local socialLinks = config.SocialLinks or {
+        Discord = "dsc.gg/obsidian",
+        WebSite = "obsidian.com"
+    }
+    
+    local adsConfig = config.Ads
+    local getKeyFunc = config.Getkey or function() end
+    local checkKeyFunc = config.CheckKey or function(key) return false end
+    
+    local Theme = config.Theme or {}
+    local BackgroundColor = Theme.BackgroundColor or Color3.fromRGB(15, 15, 15)
+    local MainColor = Theme.MainColor or Color3.fromRGB(25, 25, 25)
+    local AccentColor = Theme.AccentColor or Color3.fromRGB(125, 85, 255)
+    local OutlineColor = Theme.OutlineColor or Color3.fromRGB(40, 40, 40)
+    local FontColor = Theme.FontColor or Color3.fromRGB(255, 255, 255)
+    local SecondaryFontColor = Theme.SecondaryFontColor or Color3.fromRGB(150, 150, 150)
+    local Font = Theme.Font or Font.fromEnum(Enum.Font.Code)
+    
+    local root = Instance.new("ScreenGui")
+    root.Name = "Obsidian_KeySystem"
+    root.ResetOnSpawn = false
+    root.DisplayOrder = 999
+    root.IgnoreGuiInset = true
+    root.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    -- Pop in scale
+    local uiScale = Instance.new("UIScale")
+    uiScale.Scale = 0.85
+    
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Name = "MainFrame"
+    mainFrame.Size = UDim2.new(0, 600, 0, 360) -- Slightly taller to fit socials
+    mainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    mainFrame.BackgroundColor3 = BackgroundColor
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Active = true
+    mainFrame.ClipsDescendants = false
+    mainFrame.Parent = root
+    
+    uiScale.Parent = mainFrame
+    
+    local mainCorner = Instance.new("UICorner")
+    mainCorner.CornerRadius = UDim.new(0, 11)
+    mainCorner.Parent = mainFrame
+    
+    local mainStroke = Instance.new("UIStroke")
+    mainStroke.Color = OutlineColor
+    mainStroke.Thickness = 1
+    mainStroke.Parent = mainFrame
+    
+    local shadow = Instance.new("ImageLabel")
+    shadow.Name = "Shadow"
+    shadow.Size = UDim2.new(1, 50, 1, 50)
+    shadow.Position = UDim2.new(0, -25, 0, -25)
+    shadow.BackgroundTransparency = 1
+    shadow.Image = "rbxassetid://6014261993"
+    shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    shadow.ImageTransparency = 0.5
+    shadow.ScaleType = Enum.ScaleType.Slice
+    shadow.SliceCenter = Rect.new(49, 49, 450, 450)
+    shadow.ZIndex = 0
+    shadow.Parent = mainFrame
+    
+    -- Left Panel
+    local leftPanel = Instance.new("Frame")
+    leftPanel.Name = "LeftPanel"
+    leftPanel.Size = UDim2.new(0, 356, 1, 0)
+    leftPanel.BackgroundTransparency = 1
+    leftPanel.ZIndex = 2
+    leftPanel.Parent = mainFrame
+    
+    -- App Icon
+    local appIcon = Instance.new("ImageLabel")
+    appIcon.Name = "AppIcon"
+    appIcon.Size = UDim2.new(0, 40, 0, 40)
+    appIcon.Position = UDim2.new(0, 28, 0, 28)
+    appIcon.BackgroundTransparency = 1
+    appIcon.Image = "rbxassetid://" .. tostring(iconId)
+    appIcon.ImageColor3 = FontColor
+    appIcon.ScaleType = Enum.ScaleType.Fit
+    appIcon.Parent = leftPanel
+    
+    -- Title
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.Name = "TitleLabel"
+    titleLabel.Size = UDim2.new(0, 240, 0, 24)
+    titleLabel.Position = UDim2.new(0, 82, 0, 28)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.Text = title
+    titleLabel.TextColor3 = FontColor
+    titleLabel.TextSize = 22
+    titleLabel.FontFace = Font
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    titleLabel.Parent = leftPanel
+    
+    -- Description
+    local descLabel = Instance.new("TextLabel")
+    descLabel.Name = "DescriptionLabel"
+    descLabel.Size = UDim2.new(0, 240, 0, 14)
+    descLabel.Position = UDim2.new(0, 82, 0, 54)
+    descLabel.BackgroundTransparency = 1
+    descLabel.Text = description
+    descLabel.TextColor3 = SecondaryFontColor
+    descLabel.TextSize = 12
+    descLabel.FontFace = Font
+    descLabel.TextXAlignment = Enum.TextXAlignment.Left
+    descLabel.Parent = leftPanel
+    
+    -- Center Divider
+    local centerDivider = Instance.new("Frame")
+    centerDivider.Name = "CenterDivider"
+    centerDivider.Size = UDim2.new(0, 1, 1, -56)
+    centerDivider.Position = UDim2.new(0, 356, 0, 28)
+    centerDivider.BackgroundColor3 = OutlineColor
+    centerDivider.BorderSizePixel = 0
+    centerDivider.ZIndex = 2
+    centerDivider.Parent = mainFrame
+    
+    -- Right Panel
+    local rightPanel = Instance.new("Frame")
+    rightPanel.Name = "RightPanel"
+    rightPanel.Size = UDim2.new(0, 244, 1, 0)
+    rightPanel.Position = UDim2.new(0, 357, 0, 0)
+    rightPanel.BackgroundTransparency = 1
+    rightPanel.ZIndex = 2
+    rightPanel.Parent = mainFrame
+    
+    -- Game Info
+    local gameTitleLabel = Instance.new("TextLabel")
+    gameTitleLabel.Name = "DetectedGameHeader"
+    gameTitleLabel.Size = UDim2.new(0, 187, 0, 14)
+    gameTitleLabel.Position = UDim2.new(0, 28, 0, 28)
+    gameTitleLabel.BackgroundTransparency = 1
+    gameTitleLabel.Text = "Detected game"
+    gameTitleLabel.TextColor3 = SecondaryFontColor
+    gameTitleLabel.TextSize = 12
+    gameTitleLabel.FontFace = Font
+    gameTitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    gameTitleLabel.Parent = rightPanel
+    
+    local gameCard = Instance.new("Frame")
+    gameCard.Name = "GameCard"
+    gameCard.Size = UDim2.new(0, 187, 0, 50)
+    gameCard.Position = UDim2.new(0, 28, 0, 48)
+    gameCard.BackgroundColor3 = MainColor
+    gameCard.BorderSizePixel = 0
+    gameCard.Parent = rightPanel
+    
+    local gameCardCorner = Instance.new("UICorner")
+    gameCardCorner.CornerRadius = UDim.new(0, 6)
+    gameCardCorner.Parent = gameCard
+    
+    local gameCardStroke = Instance.new("UIStroke")
+    gameCardStroke.Color = OutlineColor
+    gameCardStroke.Thickness = 1
+    gameCardStroke.Parent = gameCard
+    
+    local gameThumbnail = Instance.new("ImageLabel")
+    gameThumbnail.Name = "GameThumbnail"
+    gameThumbnail.Size = UDim2.new(0, 32, 0, 32)
+    gameThumbnail.Position = UDim2.new(0, 10, 0, 9)
+    gameThumbnail.BackgroundColor3 = BackgroundColor
+    gameThumbnail.Image = "rbxthumb://type=Asset&id=" .. tostring(game.PlaceId) .. "&w=150&h=150"
+    gameThumbnail.ScaleType = Enum.ScaleType.Crop
+    gameThumbnail.Parent = gameCard
+    
+    local gameThumbCorner = Instance.new("UICorner")
+    gameThumbCorner.CornerRadius = UDim.new(0, 4)
+    gameThumbCorner.Parent = gameThumbnail
+    
+    local gameNameText = Instance.new("TextLabel")
+    gameNameText.Name = "GameName"
+    gameNameText.Size = UDim2.new(0, 130, 0, 14)
+    gameNameText.Position = UDim2.new(0, 48, 0, 10)
+    gameNameText.BackgroundTransparency = 1
+    gameNameText.Text = "Loading..."
+    gameNameText.TextColor3 = FontColor
+    gameNameText.TextSize = 12
+    gameNameText.FontFace = Font
+    gameNameText.TextXAlignment = Enum.TextXAlignment.Left
+    gameNameText.TextTruncate = Enum.TextTruncate.AtEnd
+    gameNameText.Parent = gameCard
+    
+    local gameStatusText = Instance.new("TextLabel")
+    gameStatusText.Name = "GameStatus"
+    gameStatusText.Size = UDim2.new(0, 130, 0, 13)
+    gameStatusText.Position = UDim2.new(0, 48, 0, 26)
+    gameStatusText.BackgroundTransparency = 1
+    gameStatusText.Text = "Checking..."
+    gameStatusText.TextColor3 = SecondaryFontColor
+    gameStatusText.TextSize = 11
+    gameStatusText.FontFace = Font
+    gameStatusText.TextXAlignment = Enum.TextXAlignment.Left
+    gameStatusText.Parent = gameCard
+    
+    task.spawn(function()
+        local pName = "Roblox Experience"
+        pcall(function()
+            local info = MarketplaceService:GetProductInfo(game.PlaceId)
+            if info and info.Name then
+                pName = info.Name
+            end
+        end)
+        gameNameText.Text = pName
+        
+        local isSupported = false
+        for _, idInfo in pairs(supportedGame) do
+            if tostring(idInfo[1]) == tostring(game.PlaceId) or tostring(idInfo[1]) == tostring(game.GameId) then
+                isSupported = idInfo[2]
+                break
+            end
+        end
+        
+        if isSupported then
+            gameStatusText.Text = "Supported"
+            gameStatusText.TextColor3 = Color3.fromRGB(130, 220, 140)
+        else
+            gameStatusText.Text = "Not in our list"
+            gameStatusText.TextColor3 = Color3.fromRGB(220, 100, 100)
+        end
+    end)
+    
+    -- Executor Info
+    local execHeader = Instance.new("TextLabel")
+    execHeader.Name = "ExecHeader"
+    execHeader.Size = UDim2.new(0, 187, 0, 12)
+    execHeader.Position = UDim2.new(0, 28, 0, 108)
+    execHeader.BackgroundTransparency = 1
+    execHeader.Text = "Executor"
+    execHeader.TextColor3 = SecondaryFontColor
+    execHeader.TextSize = 12
+    execHeader.FontFace = Font
+    execHeader.TextXAlignment = Enum.TextXAlignment.Left
+    execHeader.Parent = rightPanel
+    
+    local detectedExec = (identifyexecutor and identifyexecutor()) or (getexecutorname and getexecutorname()) or "Unknown"
+    local execValue = Instance.new("TextLabel")
+    execValue.Name = "ExecValue"
+    execValue.Size = UDim2.new(0, 187, 0, 14)
+    execValue.Position = UDim2.new(0, 28, 0, 124)
+    execValue.BackgroundTransparency = 1
+    execValue.Text = detectedExec
+    execValue.TextColor3 = FontColor
+    execValue.TextSize = 12
+    execValue.FontFace = Font
+    execValue.TextXAlignment = Enum.TextXAlignment.Left
+    execValue.Parent = rightPanel
+    
+    -- Status Info
+    local statusHeader = Instance.new("TextLabel")
+    statusHeader.Name = "StatusHeader"
+    statusHeader.Size = UDim2.new(0, 187, 0, 12)
+    statusHeader.Position = UDim2.new(0, 28, 0, 148)
+    statusHeader.BackgroundTransparency = 1
+    statusHeader.Text = "Status"
+    statusHeader.TextColor3 = SecondaryFontColor
+    statusHeader.TextSize = 12
+    statusHeader.FontFace = Font
+    statusHeader.TextXAlignment = Enum.TextXAlignment.Left
+    statusHeader.Parent = rightPanel
+    
+    local statusValue = Instance.new("TextLabel")
+    statusValue.Name = "StatusValue"
+    statusValue.Size = UDim2.new(0, 187, 0, 14)
+    statusValue.Position = UDim2.new(0, 28, 0, 164)
+    statusValue.BackgroundTransparency = 1
+    statusValue.Text = "Key required"
+    statusValue.TextColor3 = FontColor
+    statusValue.TextSize = 12
+    statusValue.FontFace = Font
+    statusValue.TextXAlignment = Enum.TextXAlignment.Left
+    statusValue.Parent = rightPanel
+    
+    local rightDivider = Instance.new("Frame")
+    rightDivider.Name = "RightDivider"
+    rightDivider.Size = UDim2.new(0, 187, 0, 1)
+    rightDivider.Position = UDim2.new(0, 28, 0, 192)
+    rightDivider.BackgroundColor3 = OutlineColor
+    rightDivider.BorderSizePixel = 0
+    rightDivider.Parent = rightPanel
+    
+    -- Social Links (Discord & Website)
+    local function createSocialButton(yPos, name, linkText, defaultIconId)
+        local btn = Instance.new("TextButton")
+        btn.Name = name .. "Button"
+        btn.Size = UDim2.new(0, 187, 0, 48)
+        btn.Position = UDim2.new(0, 28, 0, yPos)
+        btn.BackgroundColor3 = MainColor
+        btn.BorderSizePixel = 0
+        btn.AutoButtonColor = false
+        btn.Text = ""
+        btn.ClipsDescendants = true
+        btn.Parent = rightPanel
+        
+        local btnCorner = Instance.new("UICorner")
+        btnCorner.CornerRadius = UDim.new(0, 6)
+        btnCorner.Parent = btn
+        
+        local btnStroke = Instance.new("UIStroke")
+        btnStroke.Color = OutlineColor
+        btnStroke.Thickness = 1
+        btnStroke.Parent = btn
+        
+        -- Icon
+        local iconFrame = Instance.new("Frame")
+        iconFrame.Size = UDim2.new(0, 24, 0, 24)
+        iconFrame.Position = UDim2.new(0, 10, 0, 12)
+        iconFrame.BackgroundTransparency = 1
+        iconFrame.Parent = btn
+        
+        local iconImg = Instance.new("ImageLabel")
+        iconImg.Name = "IconImg"
+        iconImg.Size = UDim2.new(0, 18, 0, 18)
+        iconImg.Position = UDim2.new(0.5, 0, 0.5, 0)
+        iconImg.AnchorPoint = Vector2.new(0.5, 0.5)
+        iconImg.BackgroundTransparency = 1
+        iconImg.Image = defaultIconId
+        iconImg.ImageColor3 = SecondaryFontColor
+        iconImg.ScaleType = Enum.ScaleType.Fit
+        iconImg.Parent = iconFrame
+        
+        local titleLbl = Instance.new("TextLabel")
+        titleLbl.Size = UDim2.new(0, 130, 0, 14)
+        titleLbl.Position = UDim2.new(0, 42, 0, 10)
+        titleLbl.BackgroundTransparency = 1
+        titleLbl.Text = name
+        titleLbl.TextColor3 = FontColor
+        titleLbl.TextSize = 12
+        titleLbl.FontFace = Font
+        titleLbl.TextXAlignment = Enum.TextXAlignment.Left
+        titleLbl.Parent = btn
+        
+        local linkLbl = Instance.new("TextLabel")
+        linkLbl.Size = UDim2.new(0, 136, 0, 13)
+        linkLbl.Position = UDim2.new(0, 42, 0, 26)
+        linkLbl.BackgroundTransparency = 1
+        linkLbl.Text = linkText or ""
+        linkLbl.TextColor3 = SecondaryFontColor
+        linkLbl.TextSize = 11
+        linkLbl.FontFace = Font
+        linkLbl.TextXAlignment = Enum.TextXAlignment.Left
+        linkLbl.TextTruncate = Enum.TextTruncate.AtEnd
+        linkLbl.Parent = btn
+        
+        -- Hover
+        btn.MouseEnter:Connect(function()
+            TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(MainColor.R*255 + 5, MainColor.G*255 + 5, MainColor.B*255 + 5)}):Play()
+            TweenService:Create(btnStroke, TweenInfo.new(0.15), {Color = AccentColor}):Play()
+            TweenService:Create(iconImg, TweenInfo.new(0.15), {ImageColor3 = AccentColor}):Play()
+        end)
+        btn.MouseLeave:Connect(function()
+            TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = MainColor}):Play()
+            TweenService:Create(btnStroke, TweenInfo.new(0.15), {Color = OutlineColor}):Play()
+            TweenService:Create(iconImg, TweenInfo.new(0.15), {ImageColor3 = SecondaryFontColor}):Play()
+        end)
+        
+        -- Copy Click Animation
+        local isCopying = false
+        btn.MouseButton1Click:Connect(function()
+            if linkText and linkText ~= "" and not isCopying then
+                isCopying = true
+                pcall(function()
+                    if setclipboard then
+                        setclipboard(linkText)
+                    elseif toclipboard then
+                        toclipboard(linkText)
+                    end
+                end)
+                
+                -- Button pop punch removed
+                
+                -- Text Slide Out Up
+                local origText = linkLbl.Text
+                local origPos = linkLbl.Position
+                local slideOut = TweenService:Create(linkLbl, TweenInfo.new(0.14, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                    Position = UDim2.new(0, 42, 0, 17),
+                    TextTransparency = 1
+                })
+                slideOut:Play()
+                slideOut.Completed:Connect(function()
+                    linkLbl.Text = "Copied!"
+                    linkLbl.TextColor3 = AccentColor
+                    linkLbl.Position = UDim2.new(0, 42, 0, 31)
+                    
+                    -- Slide In from Bottom
+                    TweenService:Create(linkLbl, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+                        Position = origPos,
+                        TextTransparency = 0
+                    }):Play()
+                    
+                    task.delay(1.5, function()
+                        local slideOutBack = TweenService:Create(linkLbl, TweenInfo.new(0.14, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                            Position = UDim2.new(0, 42, 0, 17),
+                            TextTransparency = 1
+                        })
+                        slideOutBack:Play()
+                        slideOutBack.Completed:Connect(function()
+                            linkLbl.Text = origText
+                            linkLbl.TextColor3 = SecondaryFontColor
+                            linkLbl.Position = UDim2.new(0, 42, 0, 31)
+                            TweenService:Create(linkLbl, TweenInfo.new(0.18, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+                                Position = origPos,
+                                TextTransparency = 0
+                            }):Play()
+                            isCopying = false
+                        end)
+                    end)
+                end)
+            end
+        end)
+        
+        return btn
+    end
+    
+    createSocialButton(204, "Discord", socialLinks.Discord, "rbxassetid://10709782758") -- Lucide Message-Square fallback
+    createSocialButton(260, "Website", socialLinks.WebSite, "rbxassetid://10709782154") -- Lucide Globe fallback
+    
+    -- Key Input
+    local inputLabel = Instance.new("TextLabel")
+    inputLabel.Name = "InputLabel"
+    inputLabel.Size = UDim2.new(0, 300, 0, 14)
+    inputLabel.Position = UDim2.new(0, 28, 0, 120)
+    inputLabel.BackgroundTransparency = 1
+    inputLabel.Text = "License key"
+    inputLabel.TextColor3 = SecondaryFontColor
+    inputLabel.TextSize = 12
+    inputLabel.FontFace = Font
+    inputLabel.TextXAlignment = Enum.TextXAlignment.Left
+    inputLabel.Parent = leftPanel
+    
+    local inputFrame = Instance.new("Frame")
+    inputFrame.Name = "InputFrame"
+    inputFrame.Size = UDim2.new(0, 300, 0, 38)
+    inputFrame.Position = UDim2.new(0, 28, 0, 140)
+    inputFrame.BackgroundColor3 = MainColor
+    inputFrame.BorderSizePixel = 0
+    inputFrame.Parent = leftPanel
+    
+    local inputScale = Instance.new("UIScale")
+    inputScale.Parent = inputFrame
+    
+    local inCorner = Instance.new("UICorner")
+    inCorner.CornerRadius = UDim.new(0, 6)
+    inCorner.Parent = inputFrame
+    
+    local inStroke = Instance.new("UIStroke")
+    inStroke.Color = OutlineColor
+    inStroke.Thickness = 1
+    inStroke.Parent = inputFrame
+    
+    local textBox = Instance.new("TextBox")
+    textBox.Name = "TextBox"
+    textBox.Size = UDim2.new(1, -20, 1, 0)
+    textBox.Position = UDim2.new(0, 10, 0, 0)
+    textBox.BackgroundTransparency = 1
+    textBox.Text = ""
+    textBox.PlaceholderText = "Paste your key here"
+    textBox.PlaceholderColor3 = SecondaryFontColor
+    textBox.TextColor3 = FontColor
+    textBox.TextSize = 13
+    textBox.FontFace = Font
+    textBox.TextXAlignment = Enum.TextXAlignment.Left
+    textBox.ClearTextOnFocus = false
+    textBox.Parent = inputFrame
+    
+    -- Pop Bounce Animation removed
+    
+    textBox.Focused:Connect(function()
+        TweenService:Create(inStroke, TweenInfo.new(0.2), {Color = AccentColor}):Play()
+    end)
+    textBox.FocusLost:Connect(function()
+        TweenService:Create(inStroke, TweenInfo.new(0.2), {Color = OutlineColor}):Play()
+    end)
+    
+    -- Buttons
+    local function CreateButton(text, pos, size, isAccent)
+        local btn = Instance.new("TextButton")
+        btn.Size = size
+        btn.Position = pos
+        btn.BackgroundColor3 = isAccent and AccentColor or MainColor
+        btn.BorderSizePixel = 0
+        btn.AutoButtonColor = false
+        btn.Text = ""
+        btn.Parent = leftPanel
+        
+        local corner = Instance.new("UICorner")
+        corner.CornerRadius = UDim.new(0, 6)
+        corner.Parent = btn
+        
+        local stroke = Instance.new("UIStroke")
+        stroke.Thickness = 1
+        stroke.Color = isAccent and AccentColor or OutlineColor
+        stroke.Parent = btn
+        
+        local titleLbl = Instance.new("TextLabel")
+        titleLbl.Size = UDim2.new(1, 0, 1, 0)
+        titleLbl.BackgroundTransparency = 1
+        titleLbl.Text = text
+        titleLbl.TextColor3 = isAccent and Color3.fromRGB(20, 16, 20) or FontColor
+        titleLbl.TextSize = 13
+        titleLbl.FontFace = Font
+        titleLbl.Parent = btn
+        
+        btn.MouseEnter:Connect(function()
+            if not isAccent then
+                TweenService:Create(stroke, TweenInfo.new(0.2), {Color = AccentColor}):Play()
+                TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(MainColor.R*255 + 5, MainColor.G*255 + 5, MainColor.B*255 + 5)}):Play()
+            else
+                TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(AccentColor.R*255 + 20, AccentColor.G*255 + 20, AccentColor.B*255 + 20)}):Play()
+            end
+        end)
+        btn.MouseLeave:Connect(function()
+            if not isAccent then
+                TweenService:Create(stroke, TweenInfo.new(0.2), {Color = OutlineColor}):Play()
+                TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = MainColor}):Play()
+            else
+                TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = AccentColor}):Play()
+            end
+        end)
+        
+        return btn
+    end
+    
+    local submitButton = CreateButton("Submit", UDim2.new(0, 28, 0, 196), UDim2.new(0, 144, 0, 38), true)
+    local getKeyButton = CreateButton("Get a key", UDim2.new(0, 184, 0, 196), UDim2.new(0, 144, 0, 38), false)
+    
+    local feedbackLabel = Instance.new("TextLabel")
+    feedbackLabel.Name = "FeedbackLabel"
+    feedbackLabel.Size = UDim2.new(0, 300, 0, 16)
+    feedbackLabel.Position = UDim2.new(0, 28, 0, 250)
+    feedbackLabel.BackgroundTransparency = 1
+    feedbackLabel.Text = ""
+    feedbackLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+    feedbackLabel.TextSize = 12
+    feedbackLabel.FontFace = Font
+    feedbackLabel.TextXAlignment = Enum.TextXAlignment.Center
+    feedbackLabel.TextTransparency = 1
+    feedbackLabel.Parent = leftPanel
+    
+    local feedbackThread
+    local function ShowFeedback(text, color, duration)
+        if feedbackThread then
+            task.cancel(feedbackThread)
+            feedbackThread = nil
+        end
+        feedbackLabel.Text = text
+        feedbackLabel.TextColor3 = color
+        
+        -- Slide up slightly and fade in
+        feedbackLabel.Position = UDim2.new(0, 28, 0, 255)
+        TweenService:Create(feedbackLabel, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+            TextTransparency = 0,
+            Position = UDim2.new(0, 28, 0, 250)
+        }):Play()
+        
+        if duration then
+            feedbackThread = task.delay(duration, function()
+                local fade = TweenService:Create(feedbackLabel, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                    TextTransparency = 1,
+                    Position = UDim2.new(0, 28, 0, 245)
+                })
+                fade:Play()
+                fade.Completed:Connect(function()
+                    if feedbackLabel.TextTransparency == 1 then
+                        feedbackLabel.Text = ""
+                    end
+                end)
+            end)
+        end
+    end
+    
+    -- Content container inside leftPanel for slide transitions
+    local leftContainer = Instance.new("Frame")
+    leftContainer.Name = "LeftContainer"
+    leftContainer.Size = UDim2.new(1, 0, 1, 0)
+    leftContainer.BackgroundTransparency = 1
+    leftContainer.ClipsDescendants = true
+    leftContainer.ZIndex = 2
+    leftContainer.Parent = leftPanel
+
+    -- Key Input View (Page 1)
+    local keyPageView = Instance.new("Frame")
+    keyPageView.Name = "KeyPageView"
+    keyPageView.Size = UDim2.new(1, 0, 1, 0)
+    keyPageView.Position = UDim2.new(0, 0, 0, 0)
+    keyPageView.BackgroundTransparency = 1
+    keyPageView.Parent = leftContainer
+
+    -- Move key input elements to keyPageView
+    inputLabel.Parent = keyPageView
+    inputFrame.Parent = keyPageView
+    submitButton.Parent = keyPageView
+    getKeyButton.Parent = keyPageView
+    feedbackLabel.Parent = keyPageView
+
+    -- Ads View (Page 2 - Full Left Panel Slide)
+    local adsPageView = Instance.new("Frame")
+    adsPageView.Name = "AdsPageView"
+    adsPageView.Size = UDim2.new(1, 0, 1, 0)
+    adsPageView.Position = UDim2.new(1, 20, 0, 0) -- starts off-screen to the right
+    adsPageView.BackgroundTransparency = 1
+    adsPageView.Visible = false
+    adsPageView.Parent = leftContainer
+
+    -- Back Button Header
+    local adsBackBtn = Instance.new("TextButton")
+    adsBackBtn.Name = "BackBtn"
+    adsBackBtn.Size = UDim2.new(0, 26, 0, 26)
+    adsBackBtn.Position = UDim2.new(0, 28, 0, 116)
+    adsBackBtn.BackgroundColor3 = MainColor
+    adsBackBtn.BorderSizePixel = 0
+    adsBackBtn.AutoButtonColor = false
+    adsBackBtn.Text = "←"
+    adsBackBtn.TextColor3 = SecondaryFontColor
+    adsBackBtn.TextSize = 14
+    adsBackBtn.FontFace = Font
+    adsBackBtn.Parent = adsPageView
+
+    local adsBackCorner = Instance.new("UICorner")
+    adsBackCorner.CornerRadius = UDim.new(0, 6)
+    adsBackCorner.Parent = adsBackBtn
+
+    local adsBackStroke = Instance.new("UIStroke")
+    adsBackStroke.Color = OutlineColor
+    adsBackStroke.Thickness = 1
+    adsBackStroke.Parent = adsBackBtn
+
+    adsBackBtn.MouseEnter:Connect(function()
+        TweenService:Create(adsBackBtn, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(MainColor.R*255 + 10, MainColor.G*255 + 10, MainColor.B*255 + 10)}):Play()
+        TweenService:Create(adsBackStroke, TweenInfo.new(0.15), {Color = AccentColor}):Play()
+        TweenService:Create(adsBackBtn, TweenInfo.new(0.15), {TextColor3 = FontColor}):Play()
+    end)
+    adsBackBtn.MouseLeave:Connect(function()
+        TweenService:Create(adsBackBtn, TweenInfo.new(0.15), {BackgroundColor3 = MainColor}):Play()
+        TweenService:Create(adsBackStroke, TweenInfo.new(0.15), {Color = OutlineColor}):Play()
+        TweenService:Create(adsBackBtn, TweenInfo.new(0.15), {TextColor3 = SecondaryFontColor}):Play()
+    end)
+
+    local adsHeaderTitle = Instance.new("TextLabel")
+    adsHeaderTitle.Name = "AdsHeaderTitle"
+    adsHeaderTitle.Size = UDim2.new(0, 200, 0, 16)
+    adsHeaderTitle.Position = UDim2.new(0, 62, 0, 114)
+    adsHeaderTitle.BackgroundTransparency = 1
+    adsHeaderTitle.Text = "Select Checkpoint"
+    adsHeaderTitle.TextColor3 = FontColor
+    adsHeaderTitle.TextSize = 13
+    adsHeaderTitle.FontFace = Font
+    adsHeaderTitle.TextXAlignment = Enum.TextXAlignment.Left
+    adsHeaderTitle.Parent = adsPageView
+
+    local adsHeaderSub = Instance.new("TextLabel")
+    adsHeaderSub.Name = "AdsHeaderSub"
+    adsHeaderSub.Size = UDim2.new(0, 200, 0, 13)
+    adsHeaderSub.Position = UDim2.new(0, 62, 0, 131)
+    adsHeaderSub.BackgroundTransparency = 1
+    adsHeaderSub.Text = "Choose a provider to get key"
+    adsHeaderSub.TextColor3 = SecondaryFontColor
+    adsHeaderSub.TextSize = 10
+    adsHeaderSub.FontFace = Font
+    adsHeaderSub.TextXAlignment = Enum.TextXAlignment.Left
+    adsHeaderSub.Parent = adsPageView
+
+    -- Ads List (Big vertical cards)
+    local adsScroll = Instance.new("ScrollingFrame")
+    adsScroll.Name = "AdsScroll"
+    adsScroll.Size = UDim2.new(0, 300, 0, 185)
+    adsScroll.Position = UDim2.new(0, 28, 0, 150)
+    adsScroll.BackgroundTransparency = 1
+    adsScroll.BorderSizePixel = 0
+    adsScroll.ScrollBarThickness = 3
+    adsScroll.ScrollBarImageColor3 = AccentColor
+    adsScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+    adsScroll.Parent = adsPageView
+
+    local adsLayout = Instance.new("UIListLayout")
+    adsLayout.Padding = UDim.new(0, 10)
+    adsLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    adsLayout.Parent = adsScroll
+
+    adsLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        adsScroll.CanvasSize = UDim2.new(0, 0, 0, adsLayout.AbsoluteContentSize.Y + 6)
+    end)
+
+    local isAnimatingTransition = false
+    local isAdsViewOpen = false
+
+    local function switchToAdsView()
+        if isAnimatingTransition or isAdsViewOpen then return end
+        isAnimatingTransition = true
+        isAdsViewOpen = true
+
+        adsPageView.Visible = true
+        adsPageView.Position = UDim2.new(1, 20, 0, 0)
+
+        -- Slide key page out to the left
+        TweenService:Create(keyPageView, TweenInfo.new(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+            Position = UDim2.new(-1, -20, 0, 0)
+        }):Play()
+
+        -- Slide ads page in from right
+        local slideIn = TweenService:Create(adsPageView, TweenInfo.new(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+            Position = UDim2.new(0, 0, 0, 0)
+        })
+        slideIn:Play()
+        slideIn.Completed:Connect(function()
+            keyPageView.Visible = false
+            isAnimatingTransition = false
+        end)
+    end
+
+    local function switchToKeyView(onComplete)
+        if isAnimatingTransition or not isAdsViewOpen then return end
+        isAnimatingTransition = true
+        isAdsViewOpen = false
+
+        keyPageView.Visible = true
+        keyPageView.Position = UDim2.new(-1, -20, 0, 0)
+
+        -- Slide ads page out to right
+        TweenService:Create(adsPageView, TweenInfo.new(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+            Position = UDim2.new(1, 20, 0, 0)
+        }):Play()
+
+        -- Slide key page in from left
+        local slideIn = TweenService:Create(keyPageView, TweenInfo.new(0.3, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+            Position = UDim2.new(0, 0, 0, 0)
+        })
+        slideIn:Play()
+        slideIn.Completed:Connect(function()
+            adsPageView.Visible = false
+            isAnimatingTransition = false
+            if onComplete then onComplete() end
+        end)
+    end
+
+    adsBackBtn.MouseButton1Click:Connect(function()
+        switchToKeyView()
+    end)
+
+    -- Populate large Ad Cards
+    local function populateAdsCards()
+        for _, child in ipairs(adsScroll:GetChildren()) do
+            if child:IsA("TextButton") then
+                child:Destroy()
+            end
+        end
+
+        if type(adsConfig) ~= "table" then return end
+
+        for adKey, adData in pairs(adsConfig) do
+            local cardIcon = 0
+            local cardName = tostring(adKey)
+
+            if type(adData) == "table" then
+                cardIcon = adData[1] or adData.Icon or 0
+                cardName = adData[2] or adData.Name or tostring(adKey)
+            elseif type(adData) == "string" then
+                cardName = adData
+            elseif type(adData) == "number" then
+                cardIcon = adData
+            end
+
+            local cardBtn = Instance.new("TextButton")
+            cardBtn.Name = "AdCard_" .. tostring(adKey)
+            cardBtn.Size = UDim2.new(1, -6, 0, 60)
+            cardBtn.BackgroundColor3 = MainColor
+            cardBtn.BorderSizePixel = 0
+            cardBtn.AutoButtonColor = false
+            cardBtn.Text = ""
+            cardBtn.ClipsDescendants = true
+            cardBtn.Parent = adsScroll
+
+            local cardCorner = Instance.new("UICorner")
+            cardCorner.CornerRadius = UDim.new(0, 8)
+            cardCorner.Parent = cardBtn
+
+            local cardStroke = Instance.new("UIStroke")
+            cardStroke.Color = OutlineColor
+            cardStroke.Thickness = 1
+            cardStroke.Parent = cardBtn
+
+            -- Icon without background box
+            local iconImg = Instance.new("ImageLabel")
+            iconImg.Name = "AdIcon"
+            iconImg.Size = UDim2.new(0, 38, 0, 38)
+            iconImg.Position = UDim2.new(0, 14, 0.5, 0)
+            iconImg.AnchorPoint = Vector2.new(0, 0.5)
+            iconImg.BackgroundTransparency = 1
+            iconImg.BorderSizePixel = 0
+            iconImg.ScaleType = Enum.ScaleType.Fit
+
+            local iconStr = tostring(cardIcon)
+            if iconStr:find("rbxasset") or iconStr:find("http") then
+                iconImg.Image = iconStr
+            elseif tonumber(cardIcon) and tonumber(cardIcon) > 0 then
+                iconImg.Image = "rbxassetid://" .. tostring(cardIcon)
+            elseif (isfile and isfile(iconStr)) or (readfile and pcall(readfile, iconStr)) then
+                local getAsset = getcustomasset or getsynasset or GetCustomAsset
+                if getAsset then
+                    iconImg.Image = getAsset(iconStr)
+                else
+                    iconImg.Image = iconStr
+                end
+            else
+                iconImg.Image = "rbxassetid://10709782154"
+            end
+            iconImg.Parent = cardBtn
+
+            -- Title and Subtitle
+            local nameLabel = Instance.new("TextLabel")
+            nameLabel.Name = "AdName"
+            nameLabel.Size = UDim2.new(1, -100, 0, 18)
+            nameLabel.Position = UDim2.new(0, 62, 0, 12)
+            nameLabel.BackgroundTransparency = 1
+            nameLabel.Text = cardName
+            nameLabel.TextColor3 = FontColor
+            nameLabel.TextSize = 13
+            nameLabel.FontFace = Font
+            nameLabel.TextXAlignment = Enum.TextXAlignment.Left
+            nameLabel.TextTruncate = Enum.TextTruncate.AtEnd
+            nameLabel.Parent = cardBtn
+
+            local subLabel = Instance.new("TextLabel")
+            subLabel.Name = "AdSub"
+            subLabel.Size = UDim2.new(1, -100, 0, 14)
+            subLabel.Position = UDim2.new(0, 62, 0, 32)
+            subLabel.BackgroundTransparency = 1
+            subLabel.Text = "Click to get key link"
+            subLabel.TextColor3 = SecondaryFontColor
+            subLabel.TextSize = 11
+            subLabel.FontFace = Font
+            subLabel.TextXAlignment = Enum.TextXAlignment.Left
+            subLabel.Parent = cardBtn
+
+            -- Right arrow indicator
+            local arrowLabel = Instance.new("TextLabel")
+            arrowLabel.Name = "Arrow"
+            arrowLabel.Size = UDim2.new(0, 20, 0, 20)
+            arrowLabel.Position = UDim2.new(1, -28, 0.5, 0)
+            arrowLabel.AnchorPoint = Vector2.new(0, 0.5)
+            arrowLabel.BackgroundTransparency = 1
+            arrowLabel.Text = "→"
+            arrowLabel.TextColor3 = SecondaryFontColor
+            arrowLabel.TextSize = 14
+            arrowLabel.FontFace = Font
+            arrowLabel.Parent = cardBtn
+
+            -- Hover Effect
+            cardBtn.MouseEnter:Connect(function()
+                TweenService:Create(cardBtn, TweenInfo.new(0.15), {
+                    BackgroundColor3 = Color3.fromRGB(MainColor.R*255 + 8, MainColor.G*255 + 8, MainColor.B*255 + 8)
+                }):Play()
+                TweenService:Create(cardStroke, TweenInfo.new(0.15), {Color = AccentColor}):Play()
+                TweenService:Create(arrowLabel, TweenInfo.new(0.15), {TextColor3 = AccentColor}):Play()
+            end)
+            cardBtn.MouseLeave:Connect(function()
+                TweenService:Create(cardBtn, TweenInfo.new(0.15), {BackgroundColor3 = MainColor}):Play()
+                TweenService:Create(cardStroke, TweenInfo.new(0.15), {Color = OutlineColor}):Play()
+                TweenService:Create(arrowLabel, TweenInfo.new(0.15), {TextColor3 = SecondaryFontColor}):Play()
+            end)
+
+            -- Click: highlight & slide smoothly back to key view
+            local isProcessing = false
+            cardBtn.MouseButton1Click:Connect(function()
+                if isProcessing then return end
+                isProcessing = true
+
+                TweenService:Create(cardBtn, TweenInfo.new(0.1), {
+                    BackgroundColor3 = AccentColor
+                }):Play()
+                nameLabel.TextColor3 = Color3.fromRGB(20, 16, 20)
+                subLabel.TextColor3 = Color3.fromRGB(40, 32, 40)
+                arrowLabel.TextColor3 = Color3.fromRGB(20, 16, 20)
+
+                task.wait(0.1)
+                switchToKeyView(function()
+                    -- Reset card visual state
+                    cardBtn.BackgroundColor3 = MainColor
+                    cardStroke.Color = OutlineColor
+                    nameLabel.TextColor3 = FontColor
+                    subLabel.TextColor3 = SecondaryFontColor
+                    arrowLabel.TextColor3 = SecondaryFontColor
+                    isProcessing = false
+
+                    pcall(getKeyFunc, adKey)
+                    ShowFeedback("Link copied for " .. cardName .. "!", AccentColor, 3)
+                end)
+            end)
+        end
+    end
+
+    if adsConfig and next(adsConfig) then
+        populateAdsCards()
+    end
+
+    getKeyButton.MouseButton1Click:Connect(function()
+        if adsConfig and next(adsConfig) then
+            switchToAdsView()
+        else
+            pcall(getKeyFunc)
+            ShowFeedback("Get Key link copied!", AccentColor, 3)
+        end
+    end)
+    
+    submitButton.MouseButton1Click:Connect(function()
+        local key = textBox.Text
+        ShowFeedback("Checking key...", AccentColor)
+        
+        task.spawn(function()
+            local success, result = pcall(checkKeyFunc, key)
+            if success and result then
+                ShowFeedback("Key verified!", Color3.fromRGB(120, 230, 130))
+                task.wait(0.5)
+                
+                -- Smooth Close Animation
+                local closeTween = TweenService:Create(uiScale, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Scale = 0.8})
+                local fadeTween = TweenService:Create(mainFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1})
+                closeTween:Play()
+                fadeTween:Play()
+                closeTween.Completed:Connect(function()
+                    root:Destroy()
+                end)
+            else
+                ShowFeedback("Invalid key. Please try again.", Color3.fromRGB(255, 90, 90), 3)
+                
+                -- Shake Input
+                local shakeOffsets = { -6, 6, -4, 4, -2, 2, 0 }
+                for _, off in ipairs(shakeOffsets) do
+                    TweenService:Create(inputFrame, TweenInfo.new(0.04, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+                        Position = UDim2.new(0, 28 + off, 0, 140)
+                    }):Play()
+                    task.wait(0.04)
+                end
+                inputFrame.Position = UDim2.new(0, 28, 0, 140)
+            end
+        end)
+    end)
+    
+    -- Dragging Logic
+    local dragging = false
+    local dragInput, dragStart, startPos
+    
+    mainFrame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = mainFrame.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    
+    mainFrame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            local delta = input.Position - dragStart
+            TweenService:Create(mainFrame, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+                Position = UDim2.new(
+                    startPos.X.Scale,
+                    startPos.X.Offset + delta.X,
+                    startPos.Y.Scale,
+                    startPos.Y.Offset + delta.Y
+                )
+            }):Play()
+        end
+    end)
+    
+    root.Parent = GetGuiParent()
+    
+    -- Entrance Animation
+    TweenService:Create(uiScale, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Scale = 1
+    }):Play()
+    
+    return root
+end
+
+return Library
